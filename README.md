@@ -11,6 +11,16 @@ docker run --rm -p 3000:3000 earthly-nextjs-example:latest
 
 # debug image
 docker run -ti --entrypoint /bin/sh earthly-nextjs-example:latest
+
+# run earth with dev image
+earth +dev && docker run --rm -p 3000:3000 \
+  -v $PWD/components:/app/components \
+  -v $PWD/lib:/app/lib \
+  -v $PWD/pages:/app/pages \
+  -v $PWD/posts:/app/posts \
+  -v $PWD/public:/app/public \
+  -v $PWD/styles:/app/styles \
+  earthly-nextjs-example-dev:latest
 ```
 
 ## Docs

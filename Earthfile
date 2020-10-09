@@ -25,6 +25,12 @@ source:
     COPY styles styles
     SAVE IMAGE
 
+# https://docs.earthly.dev/earthfile#with-docker-beta
+dev:
+    FROM +source
+    CMD ["npm", "run", "dev"]
+    SAVE IMAGE earthly-nextjs-example-dev:latest
+
 lint:
     FROM +source
     COPY prettier.config.js prettier.config.js
