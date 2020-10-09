@@ -25,11 +25,27 @@ source:
     COPY styles styles
     SAVE IMAGE
 
-# https://docs.earthly.dev/earthfile#with-docker-beta
 dev:
     FROM +source
     CMD ["npm", "run", "dev"]
     SAVE IMAGE earthly-nextjs-example-dev:latest
+
+# https://docs.earthly.dev/guides/docker-in-earthly
+# https://docs.earthly.dev/earthfile#with-docker-beta
+# run: earth -P +rundev
+# rundev:
+#     FROM docker:19.03.12-dind
+#     WITH DOCKER
+#         DOCKER LOAD +dev earthly-nextjs-example-dev:latest
+#         RUN docker run --network=host \
+#             -v $PWD/components:/app/components \
+#             -v $PWD/lib:/app/lib \
+#             -v $PWD/pages:/app/pages \
+#             -v $PWD/posts:/app/posts \
+#             -v $PWD/public:/app/public \
+#             -v $PWD/styles:/app/styles \
+#             earthly-nextjs-example-dev:latest
+#     END
 
 lint:
     FROM +source

@@ -6,6 +6,9 @@
 # build image
 earth +docker
 
+# lint code
+earth +lint
+
 # start image
 docker run --rm -p 3000:3000 earthly-nextjs-example:latest
 
@@ -27,7 +30,10 @@ earth +dev && docker run --rm -p 3000:3000 \
 
 - <https://www.earthly.dev/>
 - <https://github.com/earthly/earthly>
+- <https://docs.earthly.dev/earthfile>
 - <https://docs.earthly.dev/guides>
+  - <https://docs.earthly.dev/guides/ci-integration>
+  - <https://docs.earthly.dev/guides/integration>
 - <https://github.com/earthly/earthly/tree/master/examples/js>
 - <https://marketplace.visualstudio.com/items?itemName=earthly.earthfile-syntax-highlighting>
 - <https://github.com/vercel/next-learn-starter>
