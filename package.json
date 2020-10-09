@@ -1,0 +1,23 @@
+{
+  "name": "earthly-nextjs-example",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "format": "prettier \"./(components|lib|pages|posts|public|styles)/**/*.js\" --write",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "date-fns": "^2.11.1",
+    "gray-matter": "^4.0.2",
+    "next": "9.5.3",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "remark": "^12.0.0",
+    "remark-html": "^12.0.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.1.2"
+  }
+}
