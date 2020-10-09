@@ -6,16 +6,25 @@
 FROM node:14.13.1-alpine3.12
 WORKDIR /app
 
+# https://docs.earthly.dev/guides/basics#reduce-code-duplication
+deps:
+    COPY package.json ./
+    COPY package-lock.json ./
+    RUN npm install
+
+    SAVE ARTIFACT package.json AS LOCAL ./package.json
+    SAVE ARTIFACT package-lock.json AS LOCAL ./package-lock.json
+    SAVE IMAGE
+
 # Declare a target, build.
 build:
-    COPY package.json package-lock.json ./
+    FROM +deps
+
     COPY components components
     COPY lib lib
     COPY pages pages
     COPY posts posts
     COPY styles styles
-
-    RUN npm install
 
     RUN npm run build
     SAVE ARTIFACT .next /nextjs AS LOCAL ./.next
