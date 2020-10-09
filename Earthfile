@@ -16,15 +16,28 @@ deps:
     SAVE ARTIFACT package-lock.json AS LOCAL ./package-lock.json
     SAVE IMAGE
 
-# Declare a target, build.
-build:
+source:
     FROM +deps
-
     COPY components components
     COPY lib lib
     COPY pages pages
     COPY posts posts
     COPY styles styles
+    SAVE IMAGE
+
+lint:
+    FROM +source
+    COPY prettier.config.js prettier.config.js
+    COPY .eslintrc.js .eslintrc.js
+    COPY .eslintcache .eslintcache
+
+    RUN npm run lint
+
+    SAVE ARTIFACT .eslintcache AS LOCAL .eslintcache
+
+# Declare a target, build.
+build:
+    FROM +source
 
     RUN npm run build
     SAVE ARTIFACT .next /nextjs AS LOCAL ./.next

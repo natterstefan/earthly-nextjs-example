@@ -21,6 +21,7 @@ docker run -ti --entrypoint /bin/sh earthly-nextjs-example:latest
 - <https://github.com/earthly/earthly/tree/master/examples/js>
 - <https://marketplace.visualstudio.com/items?itemName=earthly.earthfile-syntax-highlighting>
 - <https://github.com/vercel/next-learn-starter>
+- <https://www.npmjs.com/package/eslint-config-ns>
 
 ## LICENSE
 
